@@ -6,6 +6,11 @@ router.get('/', (req, res) => {
         title: 'Add course',
         isAdd: true
     });
+});
+
+router.post('/', (req,res)=>{
+    console.log(req.body);
+    res.redirect('/courses')
 })
 
 module.exports = router;

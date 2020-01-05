@@ -20,6 +20,7 @@ app.set('views', 'views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 //registration of routes
+app.use(express.urlencoded({ extended: true }));
 app.use('/', homeRoutes);
 app.use('/add', addRoutes);
 app.use('/courses', coursesRoutes);
