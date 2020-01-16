@@ -25,3 +25,11 @@
 .course .price.big {
     font-size: 2.5rem;
 }
+
+.home p{
+    font-size: 1.5rem;
+    line-height: 1.6rem;
+}
+.courses .courses_title{
+    font-weight: bold;
+}

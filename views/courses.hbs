@@ -1,18 +1,19 @@
 <h1>Courses</h1>
 {{#if courses.length}}
 {{#each courses}}
-<div class="row">
+<div class="row courses">
     <div class="col s6 offset-s3">
         <div class="card">
             <div class="card-image">
                 <img src={{img}} alt={{title}}>
             </div>
             <div class="card-content">
-                <span class="card-title">{{title}}</span>
+                <span class="card-title courses_title">{{title}}</span>
                 <p class="price">{{price}}</p>
             </div>
             <div class="card-action">
                 <a href="/courses/{{id}}" target="_blank">Open course</a>
+                <a href="/courses/{{id}}/edit?allowed=true">Edit course</a>
             </div>
         </div>
     </div>
