@@ -26,10 +26,25 @@
     font-size: 2.5rem;
 }
 
-.home p{
+.home p {
     font-size: 1.5rem;
     line-height: 1.6rem;
 }
-.courses .courses_title{
+
+.courses .courses_title {
     font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.link-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
 }
