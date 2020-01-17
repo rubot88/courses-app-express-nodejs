@@ -1,20 +1,20 @@
 const { Router } = require('express');
 const router = Router();
-const Card = require('../models/card');
+const Cart = require('../models/cart');
 const Course = require('../models/course');
 
 router.post('/add', async (req, res) => {
     const course = await Course.getById(req.body.id);
-    await Card.add(course);
-    res.redirect('/card');
+    await Cart.add(course);
+    res.redirect('/cart');
 });
 
 
 router.get('/', async (req, res) => {
-    const { courses, price } = await Card.getAll();
-    res.render('card', {
-        title: 'Card',
-        idCard: true,
+    const { courses, price } = await Cart.getAll();
+    res.render('cart', {
+        title: 'Cart',
+        idCart: true,
         courses,
         totalPrice: price
     })

@@ -1,0 +1,35 @@
+<h1>Cart</h1>
+{{#if courses.length}}
+
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>Course title</th>
+            <th>Count</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each courses}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{count}}</td>
+            <td>
+                <button class="btn btn-small">&plus;</button class="btn btn-primary">
+                <button class="btn btn-small red darken-1">&minus;</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Total price</th>
+            <td><strong class="price">{{totalPrice}}</strong></td>
+        </tr>
+    </tfoot>
+</table>
+
+{{else}}
+<p>Your Shopping Cart is empty</p>
+{{/if}}

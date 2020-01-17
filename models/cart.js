@@ -4,30 +4,30 @@ const path = require('path');
 const p = path.join(
     path.dirname(process.mainModule.filename),
     'data',
-    'card.json'
+    'cart.json'
 )
 
-class Card {
+class Cart {
     static async add(course) {
-        const card = await Card.getAll();
+        const cart = await Cart.getAll();
 
-        const idx = card.courses.findIndex(c => c.id === course.id);
-        const candidate = card.courses[idx];
+        const idx = cart.courses.findIndex(c => c.id === course.id);
+        const candidate = cart.courses[idx];
 
         if (candidate) {
             candidate.count++;
-            card.courses[idx] = candidate;
+            cart.courses[idx] = candidate;
         } else {
             course.count = 1;
-            card.courses.push(course);
+            cart.courses.push(course);
         }
 
-        card.price += Number(course.price);
+        cart.price += Number(course.price);
 
         return new Promise((res, rej) => {
             fs.writeFile(
                 p,
-                JSON.stringify(card),
+                JSON.stringify(cart),
                 (err) => {
                     if (err) {
                         rej(err);
@@ -52,4 +52,4 @@ class Card {
     }
 }
 
-module.exports = Card;
+module.exports = Cart;
