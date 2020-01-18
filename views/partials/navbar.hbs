@@ -19,10 +19,15 @@
             {{else}}
             <li> <a href="/add">Add course</a> </li>
             {{/if}}
-            {{#if idCart}}
+            {{#if isCart}}
             <li class="active"> <a href="/cart">Cart</a> </li>
             {{else}}
             <li> <a href="/cart">Cart</a> </li>
+            {{/if}}
+            {{#if isAbout}}
+            <li class="active"> <a href="/about">About</a> </li>
+            {{else}}
+            <li> <a href="/about">About</a> </li>
             {{/if}}
 
         </ul>
