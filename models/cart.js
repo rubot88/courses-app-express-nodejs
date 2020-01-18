@@ -40,7 +40,16 @@ class Cart {
         cart.price -= Number(course.price);
         return Cart.update(cart);
     }
+    static async increase(id) {
+        const cart = await Cart.getAll();
 
+        const idx = cart.courses.findIndex(c => c.id === id);
+        const course = cart.courses[idx];
+
+        cart.courses[idx].count++;
+        cart.price += Number(course.price);
+        return Cart.update(cart);
+    }
     static async add(course) {
         const cart = await Cart.getAll();
 

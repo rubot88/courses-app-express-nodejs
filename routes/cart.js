@@ -13,6 +13,7 @@ router.get('/add/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const { courses, price } = await Cart.getAll();
+    
     res.render('cart', {
         title: 'Cart',
         isCart: true,
@@ -25,7 +26,11 @@ router.delete('/remove/:id', async (req, res) => {
     const cart = await Cart.remove(req.params.id);
     res.status(200).json(cart);
 }
-
+);
+router.get('/increase/:id', async (req, res) => {
+    const cart = await Cart.increase(req.params.id);    
+    res.status(200).json(cart);
+}
 );
 
 module.exports = router;
