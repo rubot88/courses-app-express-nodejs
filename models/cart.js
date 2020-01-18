@@ -8,6 +8,39 @@ const p = path.join(
 )
 
 class Cart {
+    static update(cart) {
+        return new Promise((res, rej) => {
+            fs.writeFile(
+                p,
+                JSON.stringify(cart),
+                (err) => {
+                    if (err) {
+                        rej(err);
+                    } else {
+                        res(cart);
+                    }
+                }
+            );
+        });
+    }
+    static async remove(id) {
+        const cart = await Cart.getAll();
+
+        const idx = cart.courses.findIndex(c => c.id === id);
+        const course = cart.courses[idx];
+
+        if (course.count === 1) {
+            // remove
+            cart.courses = cart.courses.filter(course => course.id !== id);
+        } else {
+            //change count
+            cart.courses[idx].count--
+        }
+
+        cart.price -= Number(course.price);
+        return Cart.update(cart);
+    }
+
     static async add(course) {
         const cart = await Cart.getAll();
 
@@ -24,19 +57,7 @@ class Cart {
 
         cart.price += Number(course.price);
 
-        return new Promise((res, rej) => {
-            fs.writeFile(
-                p,
-                JSON.stringify(cart),
-                (err) => {
-                    if (err) {
-                        rej(err);
-                    } else {
-                        res();
-                    }
-                }
-            );
-        });
+        Cart.update(cart);
 
     }
     static async getAll() {

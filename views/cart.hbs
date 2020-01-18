@@ -1,35 +1,37 @@
 <h1>Cart</h1>
-{{#if courses.length}}
+<div id="cart">
+    {{#if courses.length}}
 
-<table class="highlight">
-    <thead>
-        <tr>
-            <th>Course title</th>
-            <th>Count</th>
-            <th>Action</th>
-        </tr>
-    </thead>
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Course title</th>
+                <th>Count</th>
+                <th>Action</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        {{#each courses}}
-        <tr>
-            <td>{{title}}</td>
-            <td>{{count}}</td>
-            <td>
-                <button class="btn btn-small">&plus;</button class="btn btn-primary">
-                <button class="btn btn-small red darken-1">&minus;</button>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>Total price</th>
-            <td><strong class="price">{{totalPrice}}</strong></td>
-        </tr>
-    </tfoot>
-</table>
+        <tbody>
+            {{#each courses}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{count}}</td>
+                <td>
+                    <button class="btn btn-small js-add" data-id={{id}}>&plus;</button class="btn btn-primary">
+                    <button class="btn btn-small red darken-1 js-remove" data-id={{id}}>&minus;</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total price</th>
+                <td><strong class="price">{{totalPrice}}</strong></td>
+            </tr>
+        </tfoot>
+    </table>
 
-{{else}}
-<p>Your Shopping Cart is empty</p>
-{{/if}}
+    {{else}}
+    <p>Your Shopping Cart is empty</p>
+    {{/if}}
+</div>

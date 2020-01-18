@@ -3,10 +3,11 @@ const router = Router();
 const Cart = require('../models/cart');
 const Course = require('../models/course');
 
-router.post('/add', async (req, res) => {
-    const course = await Course.getById(req.body.id);
+router.get('/add/:id', async (req, res) => {
+    console.log(req.params.id);
+    const course = await Course.getById(req.params.id);
     await Cart.add(course);
-    res.redirect('/cart');
+    res.status(200).json(course);
 });
 
 
@@ -14,9 +15,17 @@ router.get('/', async (req, res) => {
     const { courses, price } = await Cart.getAll();
     res.render('cart', {
         title: 'Cart',
-        idCart: true,
+        isCart: true,
         courses,
         totalPrice: price
     })
-})
+});
+
+router.delete('/remove/:id', async (req, res) => {
+    const cart = await Cart.remove(req.params.id);
+    res.status(200).json(cart);
+}
+
+);
+
 module.exports = router;
