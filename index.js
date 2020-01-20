@@ -37,11 +37,12 @@ const PORT = process.env.PORT || 3000;
 //define a mongoose connection
 (async function () {
     const PASSWORD = `bwKkirh1AL7iegSL`;
-    const URL = `mongodb+srv://rustam:${PASSWORD}@cluster0-qymrr.mongodb.net/test?retryWrites=true&w=majority`;
+    const URL = `mongodb+srv://rustam:${PASSWORD}@cluster0-qymrr.mongodb.net/coursesShop`;
     try {
         await mongoose.connect(URL, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify:false
         });
 
         app.listen(PORT, () => {

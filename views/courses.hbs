@@ -5,18 +5,22 @@
     <div class="courses-row">
         <div class="courses-card">
             <div class="courses-image">
-                <img src={{img}} alt={{title}}>
+                <a href="/courses/{{id}}" target="_blank">
+                    <img src={{img}} alt={{title}}>
+                </a>
             </div>
             <div class="content">
-                <span class="courses-title">{{title}}</span>
-                <p class="price">{{price}}</p>
+                <a href="/courses/{{id}}" target="_blank">
+                    <span class="courses-title">{{title}}</span>
+                    <p class="price">{{price}}</p>
+                </a>
             </div>
             <div class="actions">
                 <div class="link-wrapper">
                     <a href="/courses/{{id}}/edit?allowed=true">Edit course</a>
                     <a href="/courses/{{id}}" target="_blank">Open course</a>
                 </div>
-                <button type="submit" class="btn btn-primary buy" data-id={{id}}>Buy</button>
+                <button type="button" class="btn btn-primary buy" data-id={{id}}>Buy</button>
             </div>
         </div>
     </div>
