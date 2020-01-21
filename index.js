@@ -8,6 +8,7 @@ const addRoutes = require('./routes/add');
 const coursesRoutes = require('./routes/courses');
 const cartRoutes = require('./routes/cart');
 const aboutRoutes = require('./routes/about');
+const User = require('./models/user');
 
 const app = express();
 
@@ -20,6 +21,18 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', 'views');
+
+app.use(async (req, res, next) => {
+    try {
+        const user = await User.findById('5e2737780d823a2328c6c7b4');
+        req.user = user;
+        
+        next();
+    } catch (e) {
+        console.log('Error: ', e.message);
+
+    }
+})
 
 //Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,16 +48,26 @@ app.use('/about', aboutRoutes);
 const PORT = process.env.PORT || 3000;
 
 //define a mongoose connection
-(async function () {
+async function start() {
     const PASSWORD = `bwKkirh1AL7iegSL`;
     const URL = `mongodb+srv://rustam:${PASSWORD}@cluster0-qymrr.mongodb.net/coursesShop`;
     try {
         await mongoose.connect(URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify:false
+            useFindAndModify: false
         });
-
+        const candidate = await User.findOne();
+        if (!candidate) {
+            const user = new User({
+                email: 'admin@admin.com',
+                name: 'admin',
+                cart: {
+                    items: []
+                }
+            });
+            await user.save();
+        }
         app.listen(PORT, () => {
             console.log(`Server is running on PORT ${PORT}`);
         });
@@ -52,4 +75,6 @@ const PORT = process.env.PORT || 3000;
         console.log(error);
 
     }
-})();
+}
+
+start();

@@ -66,7 +66,6 @@ function coursesBuyHandler(event) {
     const { target } = event;
     if (target.classList.contains('buy')) {
         const id = target.dataset.id;
-        console.log(id);
         fetch(`/cart/add/${id}`);
     }
 }
