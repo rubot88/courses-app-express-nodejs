@@ -111,6 +111,7 @@ nav {
     justify-content: flex-start;
     align-items: center;
     flex-flow: row wrap;
+    margin-bottom: 10px;
 }
 
 .link-wrapper a {

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
+const { Schema,Document} = require('mongoose');
 
 const homeRoutes = require('./routes/home');
 const addRoutes = require('./routes/add');
@@ -26,7 +27,7 @@ app.use(async (req, res, next) => {
     try {
         const user = await User.findById('5e2737780d823a2328c6c7b4');
         req.user = user;
-        
+            
         next();
     } catch (e) {
         console.log('Error: ', e.message);
