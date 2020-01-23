@@ -45,8 +45,8 @@ function renderCart(cart) {
             <td>${c.title}</td>
             <td>${c.count}</td>
             <td>
-            <button class="btn btn-small js-add" data-id="${c._id}">&plus;</button class ="btn btn-primary">
-            <button class="btn btn-small red darken-1 js-remove" data-id="${c._id}">&minus;</button>
+            <button class="btn btn-small js-add" data-id="${c.id}">&plus;</button class ="btn btn-primary">
+            <button class="btn btn-small red darken-1 js-remove" data-id="${c.id}">&minus;</button>
             </td>
         </tr>
             `

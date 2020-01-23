@@ -10,7 +10,9 @@ const mapCartToCourses = (cart) => {
         .items
         .map(item => ({
             ...item.courseId._doc,
-            count: item.count
+            id: item.courseId._id,
+            count: item.count,
+
         }));
 };
 
