@@ -155,3 +155,7 @@ nav li img {
     object-fit: cover;
     padding: 12px 0;
 }
+
+.cart-table{
+    margin-bottom: 1rem;
+}

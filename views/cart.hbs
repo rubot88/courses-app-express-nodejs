@@ -2,7 +2,7 @@
 <div id="cart">
     {{#if courses.length}}
 
-    <table class="highlight">
+    <table class="highlight cart-table">
         <thead>
             <tr>
                 <th>Course title</th>
@@ -30,6 +30,9 @@
             </tr>
         </tfoot>
     </table>
+
+    <form action="/order" method="POST">
+        <button type="submits" class="btn">Make order</button></form>
 
     {{else}}
     <p>Your Shopping Cart is empty</p>
